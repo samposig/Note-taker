@@ -9,6 +9,7 @@ SO THAT I can organize my thoughts and keep track of tasks I need to complete
 
 ## Table of Contents
 [Installation](#installation)
+[Heroku-App-Link](#heroku-app-link)
 [Usage](#usage)
 [License](#license)
 [Contributing](#contributing)
@@ -16,6 +17,9 @@ SO THAT I can organize my thoughts and keep track of tasks I need to complete
 
 ## Installation
 To install, go to https://github.com/samposig/Note-Taker.git.  On the top right side click the button labled "code".  Copy the html, open a terminal, and enter 'git clone' + the html link you copied.  This will clone repository down to your local computer. Will need to then deploy app in Heroku.
+
+## Heroku App Link
+https://note-taker--2.herokuapp.com/
 
 ## Usage
 The app adds and stores notes to the local database on the user's device.  All notes can be saved and viewed later.
