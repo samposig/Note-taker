@@ -7,13 +7,6 @@ AS A small business owner
 I WANT to be able to write and save notes
 SO THAT I can organize my thoughts and keep track of tasks I need to complete
 
-## Table of Contents
-[Installation](#installation)
-[Heroku-App-Link](#heroku-app-link)
-[Usage](#usage)
-[License](#license)
-[Contributing](#contributing)
-[Questions](#questions)
 
 ## Installation
 To install, go to https://github.com/samposig/Note-Taker.git.  On the top right side click the button labled "code".  Copy the html, open a terminal, and enter 'git clone' + the html link you copied.  This will clone repository down to your local computer. Will need to then deploy app in Heroku.

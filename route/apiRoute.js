@@ -1,20 +1,30 @@
-
-const path = require('path');
-const notes = require('../db/db.json');
-const fs = require('fs');
 const router = require('express').Router();
 
-router.get('/api/notes', (req, res) => {
-    res.json(notes)
-})
-router.post('/api/notes', (req, res) => {
-    const note = {
-        title: req.body.title,
-        text: req.body.text
-    }
-    notes.push(note)
-    fs.writeFileSync(path.join(__dirname, "../db/db.json"), JSON.stringify(note))
-    res.json(note)
-})
+const saveData = require('../db/saveData');
 
-module.exports = router
+// GET request
+router.get('/notes', function (req, res) {
+    saveData
+        .retrieveNotes()
+        .then(notes => res.json(notes))
+        .catch(err => res.status(500).json(err));
+});
+
+// POST request
+router.post('/notes', (req, res) => {
+    saveData
+        .addNote(req.body)
+        .then((note) => res.json(note))
+        .catch(err => res.status(500).json(err));
+});
+
+// Bonus - DELETE request
+router.delete('/notes/:id', function (req, res) {
+    saveData
+        .deleteNote(req.params.id)
+        .then(() => res.json({ ok: true }))
+        .catch(err => res.status(500).json(err));
+});
+
+
+module.exports = router;

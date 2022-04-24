@@ -1,22 +1,25 @@
 const express = require('express');
-const fs = require('fs');
-var notes = fs.readFileSync('./db/db.json');
-const apiRoutes = require('./route/apiRoute.js');
-const pageRoutes = require('./route/pageRoute.js');
-// const uuid = require('')
-const PORT = process.env.PORT || 3001;
+const apiRoutes = require('./routes/apiRoutes');
+const htmlRoutes = require('./routes/htmlRoutes');
 
+// Create an express server
 const app = express();
 
-// middleware for parsing Json and url data
+// Set PORT
+const PORT = process.env.PORT || 3001;
 
+// Parse incoming string or array data
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public'));
-app.use(express.json());
-//get route for homepage
-app.use('/', apiRoutes)
-app.use('/', pageRoutes)
 
-app.listen(process.env.PORT || 3000, ()=>{
-    console.log('api server is listening')
-})
+// Parse incoming JSON data
+app.use(express.json());
+
+
+app.use(express.static('public'));
+app.use('/api', apiRoutes);
+app.use('/', htmlRoutes);
+
+// Listener
+app.listen(PORT, () => {
+    console.log(`API server is ready on port ${PORT}!`);
+});
